@@ -1,0 +1,24 @@
+---
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.jsx";
+const { title = "Termitrack" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    {/* NavBar no longer wrapped with React Router */}
+    <NavBar client:load onToggleModal={() => {}} />
+
+    <main>
+      <slot /> <!-- Page content will be injected here -->
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>
