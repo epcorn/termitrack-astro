@@ -59,6 +59,8 @@ const proProductData = {
     ],
     buttonText: "GET PRICING",
     buttonLink: "/demo?product=pro",
+    brochureUrl:
+    "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf",
   },
   howItWorks: {
     heading: "Multi-Sensor Technology Explained",
@@ -152,6 +154,7 @@ const proProductData = {
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...proProductData.hero} />
   <NewsTicker text={proProductData.NewsTicker.text} />
+<<<<<<< HEAD
     <ProductOverview
     heading={proProductData.overview.heading}
     imageUrls={proProductData.overview.imageUrls} {/* Pass new array prop */}
@@ -162,6 +165,9 @@ const proProductData = {
     buttonLink={proProductData.overview.buttonLink}
     client:load {/* Added directive because the component is interactive */}
   /> 
+=======
+  <ProductOverview client:visible {...proProductData.overview} />
+>>>>>>> upstream/main
   <HowItWorks {...proProductData.howItWorks} />
   <BenefitsGrid
     heading={proProductData.benefits.heading}
