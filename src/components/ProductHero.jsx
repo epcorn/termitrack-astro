@@ -9,7 +9,7 @@ const ProductHero = ({
 }) => {
   return (
     <section
-      className="relative bg-contain bg-right mt-10 bg-no-repeat text-white pt-0 py-32 md:py-32 "
+      className="relative bg-contain bg-right mt-10 bg-no-repeat text-white py-32 md:py-48 "
       // Use prop for background image - ensure URL is valid
       style={{ backgroundImage: `url(${backgroundImageUrl})` }}
     >

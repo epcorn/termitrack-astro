@@ -37,16 +37,8 @@ const proProductData = {
   },
   overview: {
     heading: "Detect the Undetectable with iTraker® Pro",
-     imageUrls: [
-        "/images/ITRAKER_BASE_PRODUCT.jpg",
-        "/images/ITracker-Pro-Cover-Image.jpg", // REQUIRED: Replace with actual paths
-        "/images/ITracker-Pro-Device-Image.jpg", // Add more if needed
-    ],
-    imageAlts: [
-        "Termatrac iTracker-Base device", // REQUIRED: Replace with actual alt text
-        "iTracker-Base with cover view",
-        "iTracker-Base with Device" // Add more if needed
-    ],    paragraphs: [
+    imageAlt: "iTraker Pro Termite Detection Device",
+    paragraphs: [
       "Engineered for elite pest management professionals, the iTraker® Pro integrates three powerful sensors into one ergonomic device. Gain definitive insights without damaging property.",
       "Its advanced technology suite provides comprehensive data for accurate diagnosis and targeted treatment planning.",
     ],
@@ -154,20 +146,7 @@ const proProductData = {
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...proProductData.hero} />
   <NewsTicker text={proProductData.NewsTicker.text} />
-<<<<<<< HEAD
-    <ProductOverview
-    heading={proProductData.overview.heading}
-    imageUrls={proProductData.overview.imageUrls} {/* Pass new array prop */}
-    imageAlts={proProductData.overview.imageAlts} {/* Pass new array prop */}
-    paragraphs={proProductData.overview.paragraphs}
-    features={proProductData.overview.features}
-    buttonText={proProductData.overview.buttonText}
-    buttonLink={proProductData.overview.buttonLink}
-    client:load {/* Added directive because the component is interactive */}
-  /> 
-=======
   <ProductOverview client:visible {...proProductData.overview} />
->>>>>>> upstream/main
   <HowItWorks {...proProductData.howItWorks} />
   <BenefitsGrid
     heading={proProductData.benefits.heading}

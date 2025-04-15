@@ -33,19 +33,9 @@ const trackerOnlyData = {
   NewsTicker: {
     text: "Special April Offer: Free carrying case with every iTraker Base purchase! Valid until April 30th, 2025.",
   },
- overview: {
-    // --- MODIFIED DATA STRUCTURE for ProductOverview ---
+  overview: {
     heading: "Simple, Reliable Termite Tracking",
-    imageUrls: [
-        "/images/ITRAKER_BASE_PRODUCT.jpg",
-        "/images/ITracker-Base-Cover-Image.jpg", // REQUIRED: Replace with actual paths
-        "/images/ITracker-Base-Device-Image.jpg", // Add more if needed
-    ],
-    imageAlts: [
-        "Termatrac Tracker Only device", // REQUIRED: Replace with actual alt text
-        "Tracker Only device side view", // Add more if needed
-    ],
-    // Removed or ignore the old 'imageAlt' property as it's not used by the new component
+    imageAlt: "Termatrac Tracker Only Device",
     paragraphs: [
       "The foundational tool utilizing Termatrac's patented Radar technology to accurately track termite movement without penetration.",
       "A budget-friendly and easy-to-use option for professionals needing core tracking capabilities.",
@@ -130,21 +120,8 @@ const trackerOnlyData = {
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...trackerOnlyData.hero} />
   <NewsTicker text={trackerOnlyData.NewsTicker.text} />
-<<<<<<< HEAD
-  <ProductOverview
-    heading={trackerOnlyData.overview.heading}
-    imageUrls={trackerOnlyData.overview.imageUrls} {/* Pass new array prop */}
-    imageAlts={trackerOnlyData.overview.imageAlts} {/* Pass new array prop */}
-    paragraphs={trackerOnlyData.overview.paragraphs}
-    features={trackerOnlyData.overview.features}
-    buttonText={trackerOnlyData.overview.buttonText}
-    buttonLink={trackerOnlyData.overview.buttonLink}
-    client:load {/* Added directive because the component is interactive */}
-  />  {trackerOnlyData.howItWorks.features.length > 0 && (
-=======
   <ProductOverview client:visible {...trackerOnlyData.overview} />
   {trackerOnlyData.howItWorks.features.length > 0 && (
->>>>>>> upstream/main
     <HowItWorks {...trackerOnlyData.howItWorks} />
   )}
   <BenefitsGrid
