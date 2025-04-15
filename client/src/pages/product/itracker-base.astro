@@ -29,6 +29,11 @@ const baseProductData = {
   hero: {
     productName: "iTraker Base",
     subTitle: "Reliable Termite Detection Tool",
+       backgroundImageUrls: [ // Pass an array
+        "/images/Header-Banner-AUS-Website.png",
+        "/images/Product_Hero_Second_Image.png",
+        "/images/IndiaMap_Termitrack.png"
+    ],
     description:
       "Dependable termite detection using Moisture, and Temperature sensors for professional inspections.",
     buttonText: "ORDER iTRAKER-BASE",
@@ -111,8 +116,7 @@ const baseProductData = {
 
 <MainLayout title={pageTitle} description={pageDescription}>
   {/* --- Start of Resolved Block --- */}
-  <ProductHero {...baseProductData.hero} />
-  {/* Assuming NewsTicker might need client:idle if interactive */}
+<ProductHero {...baseProductData.hero} client:load />  {/* Assuming NewsTicker might need client:idle if interactive */}
   <NewsTicker text={baseProductData.NewsTicker.text} client:idle />
 
   {/* Resolved ProductOverview: Using individual props from HEAD + brochureUrl + client:load */}

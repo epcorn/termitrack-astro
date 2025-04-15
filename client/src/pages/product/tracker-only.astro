@@ -28,6 +28,11 @@ const trackerOnlyData = {
   hero: {
     productName: "Tracker Only",
     subTitle: "Essential Termite Tracking",
+       backgroundImageUrls: [ // Pass an array
+        "/images/iTracker_HeroSection_Image.png",
+        "/images/Product_Hero_Second_Image.png",
+        "/images/IndiaMap_Termitrack.png"
+    ],
     description:
       "The original Termatrac technology for reliable, non-invasive termite tracking.",
     buttonText: "ORDER TRACKER-ONLY",
@@ -105,7 +110,7 @@ const trackerOnlyData = {
 ---
 
 <MainLayout title={pageTitle} description={pageDescription}>
-  <ProductHero {...trackerOnlyData.hero} />
+<ProductHero {...trackerOnlyData.hero} client:load />  {/* Assuming NewsTicker might need client:idle if interactive */}
   {/* Assuming NewsTicker might need client:idle if interactive */}
   <NewsTicker text={trackerOnlyData.NewsTicker.text} client:idle />
 
