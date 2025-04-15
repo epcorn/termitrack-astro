@@ -48,6 +48,8 @@ const trackerOnlyData = {
     ],
     buttonText: "Get Pricing",
     buttonLink: "/contact?product=tracker",
+    brochureUrl:
+    "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf",
   },
   howItWorks: {
     heading: "Core Tracking Technology",
@@ -118,7 +120,7 @@ const trackerOnlyData = {
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...trackerOnlyData.hero} />
   <NewsTicker text={trackerOnlyData.NewsTicker.text} />
-  <ProductOverview {...trackerOnlyData.overview} />
+  <ProductOverview client:visible {...trackerOnlyData.overview} />
   {trackerOnlyData.howItWorks.features.length > 0 && (
     <HowItWorks {...trackerOnlyData.howItWorks} />
   )}

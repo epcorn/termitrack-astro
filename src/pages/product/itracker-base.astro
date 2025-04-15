@@ -51,6 +51,8 @@ const baseProductData = {
     ],
     buttonText: "GET PRICING",
     buttonLink: "/demo?product=base",
+    brochureUrl:
+    "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf",
   },
   howItWorks: {
     heading: "Core Sensor Technology",
@@ -137,7 +139,7 @@ const baseProductData = {
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...baseProductData.hero} />
   <NewsTicker text={baseProductData.NewsTicker.text} />
-  <ProductOverview {...baseProductData.overview} />
+  <ProductOverview client:visible {...baseProductData.overview} />
   <HowItWorks {...baseProductData.howItWorks} />
   <BenefitsGrid
     heading={baseProductData.benefits.heading}

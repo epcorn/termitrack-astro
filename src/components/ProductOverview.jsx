@@ -1,14 +1,20 @@
 import React from "react";
-
+import pkg from "file-saver";
 const ProductOverview = ({
   heading = "Product Overview Heading",
-  imageUrl = "/images/ITRAKER_PRODUCT.png", // Using the imported default image
+  imageUrl = "/images/ITRAKER_PRODUCT.png",
   imageAlt = "Product Image",
-  paragraphs = [], // Expects an array of strings
-  features = [], // Expects an array of strings
+  paragraphs = [],
+  features = [],
   buttonText = "Request a Demo",
   buttonLink = "#",
+  brochureUrl,
 }) => {
+  const { saveAs } = pkg;
+
+  const handleDownload = async () => {
+    saveAs(brochureUrl, "product-brochure.pdf");
+  };
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-6">
@@ -16,23 +22,16 @@ const ProductOverview = ({
           {heading}
         </h2>
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
-          {/* Image Column */}
-          {/* --- MODIFIED DIV: Added border --- */}
           <div className="md:w-4/12 flex justify-center p-1 border-2 border-yellow-400 rounded-lg">
             {" "}
-            {/* Added p-1, border-2, border-yellow-400, rounded-lg */}
             <img
               src={imageUrl}
               alt={imageAlt}
-              // Max width capped at 18rem
               className="rounded-lg  w-full max-w-[18rem]"
-              // Note: Image already has rounded-lg, border's rounding will match.
             />
           </div>
 
-          {/* Text Column */}
           <div className="md:w-7/12 text-gray-700">
-            {/* Render paragraphs */}
             {paragraphs.map((text, index) => (
               <p
                 key={index}
@@ -42,7 +41,6 @@ const ProductOverview = ({
               </p>
             ))}
 
-            {/* Render features */}
             {features.length > 0 && (
               <ul className="space-y-2 mb-8 list-disc list-inside text-base md:text-lg">
                 {features.map((feature, index) => (
@@ -51,12 +49,17 @@ const ProductOverview = ({
               </ul>
             )}
 
-            {/* Button */}
             <a href={buttonLink}>
               <button className="bg-yellow-400 border border-transparent text-black py-3 px-6 rounded-lg font-semibold hover:bg-yellow-500 hover:text-black transition">
                 {buttonText}
               </button>
             </a>
+            <button
+              className="w-full sm:w-auto ml-2 text-black bg-transparent border-2 border-yellow-400 hover:text-white hover:bg-yellow-400 font-bold py-3 px-8 rounded-lg"
+              onClick={handleDownload}
+            >
+              <span>Download</span>
+            </button>
           </div>
         </div>
       </div>
