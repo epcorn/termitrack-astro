@@ -1,20 +1,16 @@
-// src/components/ContactUs.jsx
 import { useState } from "react";
 
 const ContactUs = () => {
-  // State for form data - Added 'phone' field
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "", // <-- Added phone field state
+    phone: "",
     message: "",
   });
 
-  // State for submission status: 'idle', 'sending', 'success', 'error'
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Handler for input changes (handles all fields including phone)
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -23,7 +19,6 @@ const ContactUs = () => {
     }));
   };
 
-  // Handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default browser submission
     setStatus("sending");
@@ -64,13 +59,11 @@ const ContactUs = () => {
       className="bg-[#FBF6E9] text-[#003229] py-16 px-6 md:px-12"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           Get in <span className="text-[#FBBF24]">Touch</span> With Us
         </h2>
-        {/* Contact Info and Form */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          {/* Contact Info */}
+          {/* Basic details */}
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-semibold mb-2">📞 Phone</h3>
@@ -79,7 +72,7 @@ const ContactUs = () => {
                   href="tel:9223453450"
                   className="text-[#003229] hover:text-[#FBBF24] transition font-medium"
                 >
-                  9223453450
+                  9223 453 450
                 </a>
               </p>
             </div>
@@ -137,27 +130,23 @@ const ContactUs = () => {
                 />
               </div>
 
-              {/* --- Added Phone Number Field --- */}
               <div>
                 <label
                   htmlFor="phone"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Phone Number (Optional){" "}
-                  {/* Label updated to show it's optional */}
                 </label>
                 <input
-                  type="tel" // Use 'tel' type for phone numbers
+                  type="tel"
                   id="phone"
-                  name="phone" // Corresponds to the state key 'phone'
-                  value={formData.phone} // Link value to state
-                  onChange={handleInputChange} // Reuse the same handler
-                  // Removed 'required' attribute to make it optional
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   className="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:ring-[#FBBF24] focus:border-[#FBBF24] focus:ring-2"
                   placeholder="Enter your phone number"
                 />
               </div>
-              {/* --- End of Added Phone Number Field --- */}
 
               <div>
                 <label
@@ -178,7 +167,6 @@ const ContactUs = () => {
                 ></textarea>
               </div>
 
-              {/* Feedback Messages */}
               {status === "success" && (
                 <p className="text-sm text-green-600 font-medium">
                   Message sent successfully!
