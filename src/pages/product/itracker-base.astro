@@ -37,7 +37,16 @@ const baseProductData = {
   },
   overview: {
     heading: "Accurate, Non-Invasive Detection with iTraker® Base",
-    imageAlt: "iTraker Base Termite Detection Device",
+       imageUrls: [
+        "/images/ITRAKER_BASE_PRODUCT.jpg",
+        "/images/ITracker-Base-Cover-Image.jpg", // REQUIRED: Replace with actual paths
+        "/images/ITracker-Base-Device-Image.jpg", // Add more if needed
+    ],
+    imageAlts: [
+        "Termatrac iTracker-Base device", // REQUIRED: Replace with actual alt text
+        "iTracker-Base with cover view",
+        "iTracker-Base with Device" // Add more if needed
+    ],
     paragraphs: [
       "The iTraker® Base provides essential sensor technology for reliable termite detection without property damage.",
       "Ideal for professionals seeking a balance of advanced features and cost-effectiveness.",
@@ -137,8 +146,16 @@ const baseProductData = {
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...baseProductData.hero} />
   <NewsTicker text={baseProductData.NewsTicker.text} />
-  <ProductOverview {...baseProductData.overview} />
-  <HowItWorks {...baseProductData.howItWorks} />
+  <ProductOverview
+    heading={baseProductData.overview.heading}
+    imageUrls={baseProductData.overview.imageUrls} {/* Pass new array prop */}
+    imageAlts={baseProductData.overview.imageAlts} {/* Pass new array prop */}
+    paragraphs={baseProductData.overview.paragraphs}
+    features={baseProductData.overview.features}
+    buttonText={baseProductData.overview.buttonText}
+    buttonLink={baseProductData.overview.buttonLink}
+    client:load {/* Added directive because the component is interactive */}
+  />   <HowItWorks {...baseProductData.howItWorks} />
   <BenefitsGrid
     heading={baseProductData.benefits.heading}
     benefits={baseProductData.benefits.items}

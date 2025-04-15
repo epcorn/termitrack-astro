@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = ({isHome = false}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsMenuOpen, setProductsMenuOpen] = useState(false);
@@ -23,8 +24,8 @@ const Navbar = () => {
 
   const toggleProductsMenu = () => setProductsMenuOpen(!productsMenuOpen);
 
-  const navClasses = `fixed w-full z-50 transition-all duration-300 top-0 ${
-    isScrolled ? "bg-[#003229] shadow-md top-0" : "bg-transparent top-10"
+  const navClasses = `fixed w-full z-50 transition-all duration-300  ${
+    isScrolled ? "bg-[#003229] shadow-md top-0" : isHome ? "bg-transparent top-10" : "bg-[#003229] top-0"
   }`;
 
   return (
