@@ -30,6 +30,11 @@ const proProductData = {
   hero: {
     productName: "iTraker Pro",
     subTitle: "Advanced Termite Detection Tool",
+    backgroundImageUrls: [ // Pass an array
+        "/images/iTracker_HeroSection_Image.png",
+        "/images/Product_Hero_Second_Image.png",
+        "/images/IndiaMap_Termitrack.png"
+    ],
     description:
       "Unmatched precision with Thermal, and Moisture sensors for non-invasive termite inspection.",
     buttonText: "ORDER iTRACKER-PRO",
@@ -113,7 +118,7 @@ const proProductData = {
 ---
 
 <MainLayout title={pageTitle} description={pageDescription}>
-  <ProductHero {...proProductData.hero} />
+<ProductHero {...proProductData.hero} client:load />  {/* Assuming NewsTicker might need client:idle if interactive */}
   {/* Assuming NewsTicker might need client:idle if interactive */}
   <NewsTicker text={proProductData.NewsTicker.text} client:idle />
 
