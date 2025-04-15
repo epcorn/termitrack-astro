@@ -33,7 +33,7 @@ const fixedContactsNeedsJS: boolean = false;
   <TopBar client:load={topBarNeedsJS || undefined} />
 
   {/* NavBar no longer wrapped with React Router */}
-  <NavBar client:load={navBarNeedsJS || undefined} onToggleModal={() => { console.log('Toggle Modal (Placeholder)'); }} />
+  <NavBar isHome = {true} client:load={navBarNeedsJS || undefined} onToggleModal={() => { console.log('Toggle Modal (Placeholder)'); }} />
 
   <FixedContacts client:load={fixedContactsNeedsJS || undefined} />
 
