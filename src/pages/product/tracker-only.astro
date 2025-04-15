@@ -1,8 +1,10 @@
 ---
+// src/pages/product/tracker-only.astro
 
 import MainLayout from '../../layouts/MainLayout.astro';
 import '../../styles/global.css'
 
+// React component imports
 import ProductHero from "../../components/ProductHero.jsx";
 import NewsTicker from "../../components/NewsTicker.jsx";
 import ProductOverview from "../../components/ProductOverview.jsx";
@@ -21,6 +23,7 @@ const RadarIcon = "📡";
 const CheckIcon = "✓";
 
 // Page data
+// Data object includes arrays for images/alts and brochureUrl
 const trackerOnlyData = {
   hero: {
     productName: "Tracker Only",
@@ -34,18 +37,16 @@ const trackerOnlyData = {
     text: "Special April Offer: Free carrying case with every iTraker Base purchase! Valid until April 30th, 2025.",
   },
  overview: {
-    // --- MODIFIED DATA STRUCTURE for ProductOverview ---
     heading: "Simple, Reliable Termite Tracking",
-    imageUrls: [
-        "/images/ITRAKER_BASE_PRODUCT.jpg",
-        "/images/ITracker-Base-Cover-Image.jpg", // REQUIRED: Replace with actual paths
-        "/images/ITracker-Base-Device-Image.jpg", // Add more if needed
+    imageUrls: [ // Array provided
+        "/images/ITRAKER_BASE_PRODUCT.jpg", // Placeholder - Update with actual Tracker Only images
+        "/images/ITracker-Base-Cover-Image.jpg",
+        "/images/ITracker-Base-Device-Image.jpg",
     ],
-    imageAlts: [
-        "Termatrac Tracker Only device", // REQUIRED: Replace with actual alt text
-        "Tracker Only device side view", // Add more if needed
+    imageAlts: [ // Array provided
+        "Termatrac Tracker Only device", // Placeholder - Update with actual Tracker Only alt text
+        "Tracker Only device side view",
     ],
-    // Removed or ignore the old 'imageAlt' property as it's not used by the new component
     paragraphs: [
       "The foundational tool utilizing Termatrac's patented Radar technology to accurately track termite movement without penetration.",
       "A budget-friendly and easy-to-use option for professionals needing core tracking capabilities.",
@@ -58,47 +59,23 @@ const trackerOnlyData = {
     ],
     buttonText: "Get Pricing",
     buttonLink: "/contact?product=tracker",
-    brochureUrl:
-    "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf",
+    brochureUrl: // URL provided
+      "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf", // Update if different for Tracker Only
   },
   howItWorks: {
     heading: "Core Tracking Technology",
     features: [
-      {
-        icon: RadarIcon,
-        title: "Termite Tracker",
-        description: "Detects termite movement through common building materials.",
-      },
+      { icon: RadarIcon, title: "Termite Tracker", description: "Detects termite movement through common building materials." },
     ],
   },
   benefits: {
     heading: "Benefits of the Tracker Only",
     items: [
-      {
-        icon: CheckIcon,
-        title: "Affordable Entry",
-        description: "Access essential tracking technology at a budget-friendly price point.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Easy to Use",
-        description: "Simple operation makes it quick to learn and deploy in the field.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Non-Invasive Method",
-        description: "Track termites without damaging walls or structures.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Proven Technology",
-        description: "Based on the original, trusted Termatrac Radar system.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Lightweight & Portable",
-        description: "Easy to carry and maneuver during inspections.",
-      },
+        { icon: CheckIcon, title: "Affordable Entry", description: "Access essential tracking technology at a budget-friendly price point." },
+        { icon: CheckIcon, title: "Easy to Use", description: "Simple operation makes it quick to learn and deploy in the field." },
+        { icon: CheckIcon, title: "Non-Invasive Method", description: "Track termites without damaging walls or structures." },
+        { icon: CheckIcon, title: "Proven Technology", description: "Based on the original, trusted Termatrac Radar system." },
+        { icon: CheckIcon, title: "Lightweight & Portable", description: "Easy to carry and maneuver during inspections." },
     ],
   },
   video: {
@@ -108,12 +85,12 @@ const trackerOnlyData = {
   techSpecs: {
     heading: "Tracker Specifications",
     specs: [
-      { label: "Sensors Included", value: "Termite Tracker" },
-      { label: "Connectivity", value: "N/A (Standalone or specific interface)" },
-      { label: "App Compatibility", value: "N/A (or specific legacy software)" },
-      { label: "Battery", value: "Standard Replaceable or Rechargeable" },
-      { label: "Weight", value: "Approx. 450g" },
-      { label: "Warranty", value: "1 Year Limited Warranty" },
+        { label: "Sensors Included", value: "Termite Tracker" },
+        { label: "Connectivity", value: "N/A (Standalone or specific interface)" },
+        { label: "App Compatibility", value: "N/A (or specific legacy software)" },
+        { label: "Battery", value: "Standard Replaceable or Rechargeable" },
+        { label: "Weight", value: "Approx. 450g" },
+        { label: "Warranty", value: "1 Year Limited Warranty" },
     ],
   },
   cta: {
@@ -129,29 +106,34 @@ const trackerOnlyData = {
 
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...trackerOnlyData.hero} />
-  <NewsTicker text={trackerOnlyData.NewsTicker.text} />
-<<<<<<< HEAD
+  {/* Assuming NewsTicker might need client:idle if interactive */}
+  <NewsTicker text={trackerOnlyData.NewsTicker.text} client:idle />
+
+  {/* --- Start of Resolved Block --- */}
+  {/* Resolved ProductOverview: Using individual props from HEAD + brochureUrl + client:load */}
   <ProductOverview
     heading={trackerOnlyData.overview.heading}
-    imageUrls={trackerOnlyData.overview.imageUrls} {/* Pass new array prop */}
-    imageAlts={trackerOnlyData.overview.imageAlts} {/* Pass new array prop */}
+    imageUrls={trackerOnlyData.overview.imageUrls}
+    imageAlts={trackerOnlyData.overview.imageAlts}
     paragraphs={trackerOnlyData.overview.paragraphs}
     features={trackerOnlyData.overview.features}
     buttonText={trackerOnlyData.overview.buttonText}
     buttonLink={trackerOnlyData.overview.buttonLink}
-    client:load {/* Added directive because the component is interactive */}
-  />  {trackerOnlyData.howItWorks.features.length > 0 && (
-=======
-  <ProductOverview client:visible {...trackerOnlyData.overview} />
+    brochureUrl={trackerOnlyData.overview.brochureUrl} {/* Added missing prop */}
+    client:load {/* Kept appropriate directive */}
+  />
+  {/* HowItWorks section follows, maintaining conditional rendering */}
   {trackerOnlyData.howItWorks.features.length > 0 && (
->>>>>>> upstream/main
     <HowItWorks {...trackerOnlyData.howItWorks} />
   )}
+  {/* --- End of Resolved Block --- */}
+
   <BenefitsGrid
     heading={trackerOnlyData.benefits.heading}
     benefits={trackerOnlyData.benefits.items}
   />
-  {trackerOnlyData.video.videoId && <Videosection {...trackerOnlyData.video} />}
+   {/* Assuming Videosection might need client:visible if interactive */}
+  {trackerOnlyData.video.videoId && <Videosection {...trackerOnlyData.video} client:visible />}
   <TechSpecs {...trackerOnlyData.techSpecs} />
   <CallToAction {...trackerOnlyData.cta} />
 </MainLayout>
