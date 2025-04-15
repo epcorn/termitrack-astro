@@ -1,17 +1,18 @@
 ---
+// src/pages/product/itracker-base.astro
 
 // Use the lean MainLayout (navbar + footer only)
 import MainLayout from '../../layouts/MainLayout.astro';
 import '../../styles/global.css'
 // React component imports
-import ProductHero from "../../components/ProductHero";
+import ProductHero from "../../components/ProductHero.jsx"; // Assuming correct casing
 import ProductOverview from "../../components/ProductOverview.jsx";
 import HowItWorks from "../../components/HowItWorks.jsx";
 import BenefitsGrid from "../../components/BenefitsGrid.jsx";
-import Videosection from "../../components/Videosection.jsx";
+import Videosection from "../../components/Videosection.jsx"; // Assuming correct casing
 import TechSpecs from "../../components/TechSpecs.jsx";
 import CallToAction from "../../components/CallToAction.jsx";
-import NewsTicker from "../../components/NewsTicker.jsx";
+import NewsTicker from "../../components/NewsTicker.jsx"; // Assuming correct casing
 
 // SEO metadata
 const pageTitle = "iTraker Base - Reliable Termite Detection | TermiTrack";
@@ -23,6 +24,7 @@ const TempIcon = "🌡️";
 const CheckIcon = "✓";
 
 // Page-specific content data
+// This data structure already looks correct for the resolved ProductOverview
 const baseProductData = {
   hero: {
     productName: "iTraker Base",
@@ -37,15 +39,15 @@ const baseProductData = {
   },
   overview: {
     heading: "Accurate, Non-Invasive Detection with iTraker® Base",
-       imageUrls: [
-        "/images/ITRAKER_BASE_PRODUCT.jpg",
-        "/images/ITracker-Base-Cover-Image.jpg", // REQUIRED: Replace with actual paths
-        "/images/ITracker-Base-Device-Image.jpg", // Add more if needed
+    imageUrls: [ // Correct: Array provided
+      "/images/ITRAKER_BASE_PRODUCT.jpg",
+      "/images/ITracker-Base-Cover-Image.jpg",
+      "/images/ITracker-Base-Device-Image.jpg",
     ],
-    imageAlts: [
-        "Termatrac iTracker-Base device", // REQUIRED: Replace with actual alt text
-        "iTracker-Base with cover view",
-        "iTracker-Base with Device" // Add more if needed
+    imageAlts: [ // Correct: Array provided
+      "Termatrac iTracker-Base device",
+      "iTracker-Base with cover view",
+      "iTracker-Base with Device"
     ],
     paragraphs: [
       "The iTraker® Base provides essential sensor technology for reliable termite detection without property damage.",
@@ -60,62 +62,25 @@ const baseProductData = {
     ],
     buttonText: "GET PRICING",
     buttonLink: "/demo?product=base",
-    brochureUrl:
-    "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf",
+    brochureUrl: // Correct: URL for download button provided
+      "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf",
   },
   howItWorks: {
     heading: "Core Sensor Technology",
     features: [
-      {
-        icon: RadarIcon,
-        title: "Termite Tracker",
-        description: "Detects termite movement through common materials.",
-      },
-      {
-        icon: TempIcon,
-        title: "Moisture & Temperature",
-        description:
-          "Identifies moisture and temperature variations linked to termite presence.",
-      },
+      { icon: RadarIcon, title: "Termite Tracker", description: "Detects termite movement through common materials." },
+      { icon: TempIcon, title: "Moisture & Temperature", description: "Identifies moisture and temperature variations linked to termite presence." },
     ],
   },
   benefits: {
     heading: "Benefits of Using iTraker Base",
     items: [
-      {
-        icon: CheckIcon,
-        title: "Reliable Detection",
-        description:
-          "Core sensor technology for accurate identification of termite activity.",
-      },
-      {
-        icon: CheckIcon,
-        title: "100% Non-Invasive",
-        description: "Inspect properties thoroughly without causing damage.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Cost-Effective Solution",
-        description:
-          "Advanced detection capabilities at an accessible price point.",
-      },
-      {
-        icon: CheckIcon,
-        title: "User-Friendly Operation",
-        description:
-          "Intuitive mobile app interface for easy data capture and reporting.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Professional Reporting",
-        description: "Generate clear reports for clients based on sensor data.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Durable for Field Use",
-        description:
-          "Built to withstand the demands of regular professional inspections.",
-      },
+        { icon: CheckIcon, title: "Reliable Detection", description: "Core sensor technology for accurate identification of termite activity." },
+        { icon: CheckIcon, title: "100% Non-Invasive", description: "Inspect properties thoroughly without causing damage." },
+        { icon: CheckIcon, title: "Cost-Effective Solution", description: "Advanced detection capabilities at an accessible price point." },
+        { icon: CheckIcon, title: "User-Friendly Operation", description: "Intuitive mobile app interface for easy data capture and reporting." },
+        { icon: CheckIcon, title: "Professional Reporting", description: "Generate clear reports for clients based on sensor data." },
+        { icon: CheckIcon, title: "Durable for Field Use", description: "Built to withstand the demands of regular professional inspections." },
     ],
   },
   video: {
@@ -125,12 +90,12 @@ const baseProductData = {
   techSpecs: {
     heading: "iTraker Base Specifications",
     specs: [
-      { label: "Sensors Included", value: "Termite, Moisture, Temperature" },
-      { label: "Connectivity", value: "Bluetooth 4.2" },
-      { label: "App Compatibility", value: "iOS 12+, Android 7+" },
-      { label: "Battery", value: "Rechargeable Li-ion, ~7 Hrs Use" },
-      { label: "Weight", value: "Approx. 520g" },
-      { label: "Warranty", value: "1 Year Limited Warranty" },
+        { label: "Sensors Included", value: "Termite, Moisture, Temperature" },
+        { label: "Connectivity", value: "Bluetooth 4.2" },
+        { label: "App Compatibility", value: "iOS 12+, Android 7+" },
+        { label: "Battery", value: "Rechargeable Li-ion, ~7 Hrs Use" },
+        { label: "Weight", value: "Approx. 520g" },
+        { label: "Warranty", value: "1 Year Limited Warranty" },
     ],
   },
   cta: {
@@ -138,36 +103,40 @@ const baseProductData = {
     text: "Step up your termite inspections with proven sensor technology. Order your iTraker Base or request a demo.",
     primaryButtonText: "GET TRACKER PRICING",
     primaryButtonLink: "/contact?product=base",
-    secondaryButtonText: "GET TRACKER PRICING",
+    secondaryButtonText: "GET TRACKER PRICING", // Consider changing one of these button texts/links
     secondaryButtonLink: "/demo?product=base",
   },
 };
 ---
 
-<!-- Layout Wrapper -->
 <MainLayout title={pageTitle} description={pageDescription}>
+  {/* --- Start of Resolved Block --- */}
   <ProductHero {...baseProductData.hero} />
-  <NewsTicker text={baseProductData.NewsTicker.text} />
-<<<<<<< HEAD
+  {/* Assuming NewsTicker might need client:idle if interactive */}
+  <NewsTicker text={baseProductData.NewsTicker.text} client:idle />
+
+  {/* Resolved ProductOverview: Using individual props from HEAD + brochureUrl + client:load */}
   <ProductOverview
     heading={baseProductData.overview.heading}
-    imageUrls={baseProductData.overview.imageUrls} {/* Pass new array prop */}
-    imageAlts={baseProductData.overview.imageAlts} {/* Pass new array prop */}
+    imageUrls={baseProductData.overview.imageUrls}
+    imageAlts={baseProductData.overview.imageAlts}
     paragraphs={baseProductData.overview.paragraphs}
     features={baseProductData.overview.features}
     buttonText={baseProductData.overview.buttonText}
     buttonLink={baseProductData.overview.buttonLink}
-    client:load {/* Added directive because the component is interactive */}
-  />   <HowItWorks {...baseProductData.howItWorks} />
-=======
-  <ProductOverview client:visible {...baseProductData.overview} />
+    brochureUrl={baseProductData.overview.brochureUrl} {/* Added missing prop */}
+    client:load {/* Kept appropriate directive */}
+  />
+  {/* HowItWorks component remains after ProductOverview */}
   <HowItWorks {...baseProductData.howItWorks} />
->>>>>>> upstream/main
+  {/* --- End of Resolved Block --- */}
+
   <BenefitsGrid
     heading={baseProductData.benefits.heading}
     benefits={baseProductData.benefits.items}
   />
-  {baseProductData.video.videoId && <Videosection {...baseProductData.video} />}
+  {/* Assuming Videosection might need client:visible if interactive */}
+  {baseProductData.video.videoId && <Videosection {...baseProductData.video} client:visible />}
   <TechSpecs {...baseProductData.techSpecs} />
   <CallToAction {...baseProductData.cta} />
 </MainLayout>

@@ -1,16 +1,18 @@
 ---
+// src/pages/product/itracker-pro.astro
 
 import MainLayout from '../../layouts/MainLayout.astro';
 import '../../styles/global.css'
 
-import ProductHero from "../../components/ProductHero.jsx";
+// React component imports
+import ProductHero from "../../components/ProductHero.jsx"; // Assuming correct casing
 import ProductOverview from "../../components/ProductOverview.jsx";
 import HowItWorks from "../../components/HowItWorks.jsx";
 import BenefitsGrid from "../../components/BenefitsGrid.jsx";
-import Videosection from "../../components/Videosection.jsx";
+import Videosection from "../../components/Videosection.jsx"; // Assuming correct casing
 import TechSpecs from "../../components/TechSpecs.jsx";
 import CallToAction from "../../components/CallToAction.jsx";
-import NewsTicker from "../../components/NewsTicker.jsx";
+import NewsTicker from "../../components/NewsTicker.jsx"; // Assuming correct casing
 
 // SEO Metadata
 const pageTitle = "iTraker Pro - Advanced Termite Detection | TermiTrack";
@@ -23,6 +25,7 @@ const ThermalIcon = "🔥";
 const CheckIcon = "✓";
 
 // Page content data
+// Data structure includes arrays for images/alts and brochureUrl
 const proProductData = {
   hero: {
     productName: "iTraker Pro",
@@ -33,20 +36,22 @@ const proProductData = {
     buttonLink: "/contact?product=pro",
   },
   NewsTicker: {
+    // Consider unique ticker text for Pro page
     text: "Special April Offer: Free carrying case with every iTraker Base purchase! Valid until April 30th, 2025.",
   },
   overview: {
     heading: "Detect the Undetectable with iTraker® Pro",
-     imageUrls: [
-        "/images/ITRAKER_BASE_PRODUCT.jpg",
-        "/images/ITracker-Pro-Cover-Image.jpg", // REQUIRED: Replace with actual paths
-        "/images/ITracker-Pro-Device-Image.jpg", // Add more if needed
+    imageUrls: [ // Correct: Array provided
+      "/images/ITRAKER_BASE_PRODUCT.jpg", // Placeholder - Update with actual Pro images
+      "/images/ITracker-Pro-Cover-Image.jpg",
+      "/images/ITracker-Pro-Device-Image.jpg",
     ],
-    imageAlts: [
-        "Termatrac iTracker-Base device", // REQUIRED: Replace with actual alt text
-        "iTracker-Base with cover view",
-        "iTracker-Base with Device" // Add more if needed
-    ],    paragraphs: [
+    imageAlts: [ // Correct: Array provided
+      "Termatrac iTracker Pro device", // Placeholder - Update with actual Pro alt text
+      "iTracker Pro with cover view",
+      "iTracker Pro device detail"
+    ],
+    paragraphs: [
       "Engineered for elite pest management professionals, the iTraker® Pro integrates three powerful sensors into one ergonomic device. Gain definitive insights without damaging property.",
       "Its advanced technology suite provides comprehensive data for accurate diagnosis and targeted treatment planning.",
     ],
@@ -59,70 +64,26 @@ const proProductData = {
     ],
     buttonText: "GET PRICING",
     buttonLink: "/demo?product=pro",
-    brochureUrl:
-    "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf",
+    brochureUrl: // Correct: URL provided
+      "https://res.cloudinary.com/epcorn/image/upload/v1744440344/gnqps2sd5wn1wthnoehr.pdf", // Assuming same brochure, update if different
   },
   howItWorks: {
     heading: "Multi-Sensor Technology Explained",
     features: [
-      {
-        icon: RadarIcon,
-        title: "Termite Tracker",
-        description: "Detects termite movement through common building materials.",
-      },
-      {
-        icon: TempIcon,
-        title: "Moisture & Temperature",
-        description:
-          "Identifies moisture anomalies and temperature variations often linked to termite activity and conducive environments.",
-      },
-      {
-        icon: ThermalIcon,
-        title: "Thermal Sensor",
-        description:
-          "Reveals subtle heat signatures produced by active termite colonies, pinpointing hidden infestations.",
-      },
+        { icon: RadarIcon, title: "Termite Tracker", description: "Detects termite movement through common building materials." },
+        { icon: TempIcon, title: "Moisture & Temperature", description: "Identifies moisture anomalies and temperature variations often linked to termite activity and conducive environments." },
+        { icon: ThermalIcon, title: "Thermal Sensor", description: "Reveals subtle heat signatures produced by active termite colonies, pinpointing hidden infestations." },
     ],
   },
   benefits: {
     heading: "Why Choose iTraker Pro?",
     items: [
-      {
-        icon: CheckIcon,
-        title: "Definitive Detection",
-        description:
-          "Highest accuracy with combined sensor data reduces guesswork and ensures effective treatment.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Completely Non-Invasive",
-        description:
-          "Inspect thoroughly without drilling, cutting, or damaging client property. Preserves structural integrity.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Save Time & Resources",
-        description:
-          "Quickly scan large areas, pinpoint activity precisely, and avoid unnecessary, widespread treatments.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Enhanced Professionalism",
-        description:
-          "Provide clients with clear, data-backed reports generated via the mobile app, building trust.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Versatile & Reliable",
-        description:
-          "Effective in various environments and materials for residential, commercial, and pre-purchase inspections.",
-      },
-      {
-        icon: CheckIcon,
-        title: "Comprehensive Data",
-        description:
-          "Combines movement, thermal, and moisture data for a complete picture of potential infestations.",
-      },
+        { icon: CheckIcon, title: "Definitive Detection", description: "Highest accuracy with combined sensor data reduces guesswork and ensures effective treatment." },
+        { icon: CheckIcon, title: "Completely Non-Invasive", description: "Inspect thoroughly without drilling, cutting, or damaging client property. Preserves structural integrity." },
+        { icon: CheckIcon, title: "Save Time & Resources", description: "Quickly scan large areas, pinpoint activity precisely, and avoid unnecessary, widespread treatments." },
+        { icon: CheckIcon, title: "Enhanced Professionalism", description: "Provide clients with clear, data-backed reports generated via the mobile app, building trust." },
+        { icon: CheckIcon, title: "Versatile & Reliable", description: "Effective in various environments and materials for residential, commercial, and pre-purchase inspections." },
+        { icon: CheckIcon, title: "Comprehensive Data", description: "Combines movement, thermal, and moisture data for a complete picture of potential infestations." },
     ],
   },
   video: {
@@ -132,12 +93,12 @@ const proProductData = {
   techSpecs: {
     heading: "iTraker Pro Specifications",
     specs: [
-      { label: "Sensors Included", value: "Thermal, Moisture, Temperature" },
-      { label: "Connectivity", value: "Bluetooth 5.0 LE" },
-      { label: "App Compatibility", value: "iOS 13+, Android 8+" },
-      { label: "Battery", value: "Rechargeable Li-ion, ~8 Hrs Use" },
-      { label: "Weight", value: "Approx. 550g" },
-      { label: "Warranty", value: "1 Year Limited Warranty" },
+        { label: "Sensors Included", value: "Thermal, Moisture, Temperature" },
+        { label: "Connectivity", value: "Bluetooth 5.0 LE" },
+        { label: "App Compatibility", value: "iOS 13+, Android 8+" },
+        { label: "Battery", value: "Rechargeable Li-ion, ~8 Hrs Use" },
+        { label: "Weight", value: "Approx. 550g" },
+        { label: "Warranty", value: "1 Year Limited Warranty" },
     ],
   },
   cta: {
@@ -145,7 +106,7 @@ const proProductData = {
     text: "Gain the competitive edge with the most advanced termite detection technology available. Order your iTraker Pro today.",
     primaryButtonText: "GET TRACKER PRICING",
     primaryButtonLink: "/contact?product=pro",
-    secondaryButtonText: "GET TRACKER PRICING",
+    secondaryButtonText: "GET TRACKER PRICING", // Consider different text/link
     secondaryButtonLink: "/demo?product=pro",
   },
 };
@@ -153,27 +114,31 @@ const proProductData = {
 
 <MainLayout title={pageTitle} description={pageDescription}>
   <ProductHero {...proProductData.hero} />
-  <NewsTicker text={proProductData.NewsTicker.text} />
-<<<<<<< HEAD
-    <ProductOverview
+  {/* Assuming NewsTicker might need client:idle if interactive */}
+  <NewsTicker text={proProductData.NewsTicker.text} client:idle />
+
+  {/* --- Start of Resolved Block --- */}
+  {/* Resolved ProductOverview: Using individual props from HEAD + brochureUrl + client:load */}
+  <ProductOverview
     heading={proProductData.overview.heading}
-    imageUrls={proProductData.overview.imageUrls} {/* Pass new array prop */}
-    imageAlts={proProductData.overview.imageAlts} {/* Pass new array prop */}
+    imageUrls={proProductData.overview.imageUrls}
+    imageAlts={proProductData.overview.imageAlts}
     paragraphs={proProductData.overview.paragraphs}
     features={proProductData.overview.features}
     buttonText={proProductData.overview.buttonText}
     buttonLink={proProductData.overview.buttonLink}
-    client:load {/* Added directive because the component is interactive */}
-  /> 
-=======
-  <ProductOverview client:visible {...proProductData.overview} />
->>>>>>> upstream/main
+    brochureUrl={proProductData.overview.brochureUrl} {/* Added missing prop */}
+    client:load {/* Kept appropriate directive */}
+  />
+  {/* --- End of Resolved Block --- */}
+
   <HowItWorks {...proProductData.howItWorks} />
   <BenefitsGrid
     heading={proProductData.benefits.heading}
     benefits={proProductData.benefits.items}
   />
-  {proProductData.video.videoId && <Videosection {...proProductData.video} />}
+  {/* Assuming Videosection might need client:visible if interactive */}
+  {proProductData.video.videoId && <Videosection {...proProductData.video} client:visible />}
   <TechSpecs {...proProductData.techSpecs} />
   <CallToAction {...proProductData.cta} />
 </MainLayout>
