@@ -33,7 +33,6 @@ export const handleContactFormSubmission = async (req, res) => {
     await sendContactEmail({ name, email, phone, message });
     console.log(`Contact email sent successfully from ${email}`);
 
-    // 3. Send Success Response
     res
       .status(200)
       .json({ success: true, message: "Message received successfully!" });
@@ -45,7 +44,6 @@ export const handleContactFormSubmission = async (req, res) => {
   }
 };
 
-// Handles POST /api/send-quote-request
 export const handleQuoteRequestSubmission = async (req, res) => {
   const { name, company, email, phone, city, message } = req.body;
 
