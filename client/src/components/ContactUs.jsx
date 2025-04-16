@@ -33,7 +33,7 @@ const ContactUs = () => {
 
     // Get the backend API base URL from environment variables
     // Ensure PUBLIC_BACKEND_API_BASE_URL is defined in client/.env
-    const baseUrl = import.meta.env.VITE_PUBLIC_BACKEND_API_BASE_UR;
+    const baseUrl = import.meta.env.VITE_PUBLIC_BACKEND_API_BASE_URL;
 
     // Check if the environment variable is set
     if (!baseUrl) {

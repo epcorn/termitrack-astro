@@ -1,5 +1,5 @@
 // controllers/contactController.js (NEW FILE)
-import ContactMessage from "../models/ContactMessage.js"; // Adjust path if needed
+import ContactMessage from "../models/contactMessage.js"; // Adjust path if needed
 import {
   sendContactEmail,
   sendQuoteRequestEmail,
