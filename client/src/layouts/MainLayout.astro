@@ -13,7 +13,7 @@ const { title = "Termitrack" } = Astro.props;
   </head>
   <body>
     {/* NavBar no longer wrapped with React Router */}
-    <NavBar client:load onToggleModal={() => {}} />
+    <NavBar client:load />
 
     <main>
       <slot /> <!-- Page content will be injected here -->
