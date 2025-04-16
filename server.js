@@ -23,7 +23,7 @@ if (
 }
 
 const app = express();
-const PORT = process.env.BACKEND_PORT || 4000;
+const PORT = process.env.PORT || process.env.BACKEND_PORT || 5000;
 
 mongoose
   .connect(process.env.MONGODB_URI)
