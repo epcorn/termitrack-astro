@@ -47,7 +47,7 @@ const ContactUs = () => {
 
     // Construct the full API endpoint URL
     // Make sure '/send-email' matches the route path defined in your Express backend
-    const endpoint = `${baseUrl}/send-email`;
+    const endpoint = `${baseUrl}/api/send-email`;
 
     try {
       // Send the form data to the backend API endpoint
