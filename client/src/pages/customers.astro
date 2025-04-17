@@ -1,0 +1,89 @@
+---
+// src/pages/customers.astro
+import MainLayout from '../layouts/MainLayout.astro'; // Use your preferred layout
+import CustomerReviewCard from '../components/CustomerReviewCard.jsx'; // Import the card component
+
+// SEO Metadata (Adjust title/description as needed)
+const pageTitle = "Customer Reviews | TermiTrack";
+const pageDescription = "See what professionals are saying about TermiTrack's termite detection tools.";
+
+// Dummy Data Array
+// Using empty strings for customerImage as requested
+const reviews = [
+  {
+    customerName: "John Doe - Pest Control Pro",
+    customerImage: "", // Leave blank or use a generic placeholder path if you have one
+    reviewText: "The iTraker Pro completely changed how we do inspections. Finding activity is faster and definitive. Highly recommended for serious professionals!",
+    productName: "iTraker Pro"
+  },
+  {
+    customerName: "Jane Smith - Building Inspector",
+    customerImage: "", // Leave blank
+    reviewText: "Using the iTraker Base has saved us so much time and reduced the need for invasive drilling during pre-purchase inspections. Our clients appreciate the non-destructive approach.",
+    productName: "iTraker Base"
+  },
+  {
+    customerName: "Advanced Pest Solutions",
+    customerImage: "", // Leave blank
+    reviewText: "Reliable, easy to use, and effective. The basic Tracker model is a great entry point into this technology and perfect for quick checks.",
+    productName: "Tracker Only"
+  },
+   {
+    customerName: "Bob Williams - Property Manager",
+    customerImage: "", // Leave blank
+    reviewText: "Impressive tech! The thermal sensor on the Pro model is fantastic for quickly scanning large areas and identifying potential issues before they become major problems.",
+    productName: "iTraker Pro"
+  },
+   {
+    customerName: "Maria Garcia",
+    customerImage: "", // Leave blank
+    reviewText: "As a homeowner concerned about termites, having an inspection done with the iTraker Base gave me peace of mind without unnecessary damage to my walls.",
+    productName: "iTraker Base"
+  },
+  {
+    customerName: "Eco Pest Management",
+    customerImage: "", // Leave blank
+    reviewText: "The data reporting feature linked with the Pro device helps us clearly communicate findings to clients. Very professional.",
+    productName: "iTraker Pro"
+  }
+  // Add more reviews as needed
+];
+
+// Dynamic Title Logic (Example - uncomment and adapt if needed later)
+// const productQuery = Astro.url.searchParams.get('product');
+// let dynamicTitle = "Customer Reviews | TermiTrack";
+// if (productQuery) {
+//   dynamicTitle = `Reviews for ${productQuery} | TermiTrack`;
+// }
+// Use dynamicTitle in MainLayout below if implemented
+
+---
+{/* Use your chosen layout */}
+<MainLayout title={pageTitle} description={pageDescription}>
+  <div class="container mx-auto px-6 py-16 lg:py-24">
+    {/* Page Heading */}
+    <h1 class="text-3xl md:text-4xl font-bold text-center text-[#003229] mb-12 lg:mb-16">
+      What Our <span class="text-[#FBBF24]">Customers</span> Say
+      {/* Add dynamic product name later if needed */}
+      {/* {productQuery && ` about ${productQuery}`} */}
+    </h1>
+
+    {/* Grid Container for Review Cards */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+      {/* Map over the reviews data */}
+      {reviews.map(review => (
+        <CustomerReviewCard
+          customerName={review.customerName}
+          customerImage={review.customerImage}
+          reviewText={review.reviewText}
+          client:visible {/* Hydrate card when it enters viewport */}
+        />
+      ))}
+    </div>
+
+    {/* Fallback message if no reviews */}
+    {reviews.length === 0 && (
+      <p class="text-center text-gray-600 mt-12">No customer reviews available yet.</p>
+    )}
+  </div>
+</MainLayout>

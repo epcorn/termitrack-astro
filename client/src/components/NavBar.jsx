@@ -1,37 +1,50 @@
+// src/components/Navbar.jsx
 import { useState, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import PropTypes from "prop-types";
 
-const Navbar = ({isHome = false}) => {
+const Navbar = ({ isHome = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsMenuOpen, setProductsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    handleScroll();
+    handleScroll(); // Initial check
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   useEffect(() => {
     AOS.init({
-      duration: 1200, // animation duration in ms
-      // once: true, // only animate once while scrolling down
+      duration: 1200,
     });
   }, []);
 
   const toggleProductsMenu = () => setProductsMenuOpen(!productsMenuOpen);
 
-  const navClasses = `fixed w-full z-50 transition-all duration-300  ${
-    isScrolled ? "bg-[#003229] shadow-md top-0" : isHome ? "bg-transparent top-10" : "bg-[#003229] top-0"
+  // Closes dropdown if mobile menu is closed
+  useEffect(() => {
+    if (!menuOpen) {
+      setProductsMenuOpen(false);
+    }
+  }, [menuOpen]);
+
+  const navClasses = `fixed w-full z-50 transition-all duration-300 ${
+    isScrolled
+      ? "bg-[#003229] shadow-md top-0"
+      : isHome
+      ? "bg-transparent top-10"
+      : "bg-[#003229] top-0"
   }`;
 
   return (
     <nav className={navClasses}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <a href="/" className="flex items-center flex-shrink-0">
             <img src="/images/logoPart.png" alt="Logo" className="h-12" />
             <span className="font-varela text-5xl font-bold text-zinc-200 ml-2">
@@ -41,12 +54,14 @@ const Navbar = ({isHome = false}) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            {/* Home Link */}
             <a
               href="/"
               className="text-white hover:text-[#FBBF24] transition px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
             </a>
+            {/* Products Dropdown */}
             <div className="relative">
               <button
                 onClick={toggleProductsMenu}
@@ -55,7 +70,9 @@ const Navbar = ({isHome = false}) => {
                 Products <FiChevronDown className="ml-1" />
               </button>
               {productsMenuOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-[#003229] text-white rounded-md shadow-lg">
+                <div className="absolute left-0 mt-2 w-48 bg-[#003229] text-white rounded-md shadow-lg py-1">
+                  {" "}
+                  {/* Added py-1 */}
                   <a
                     href="/product/tracker-only"
                     className="block px-4 py-2 text-sm hover:bg-[#FBBF24] hover:text-black"
@@ -77,8 +94,19 @@ const Navbar = ({isHome = false}) => {
                 </div>
               )}
             </div>
+
+            {/* === ADDED CUSTOMERS LINK (Desktop) === */}
             <a
-              href="#contact"
+              href="/customers"
+              className="text-white hover:text-[#FBBF24] transition px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Customers
+            </a>
+            {/* ======================================= */}
+
+            {/* Contact Link */}
+            <a
+              href="/#contact" // Link to contact section on homepage
               className="text-white hover:text-[#FBBF24] transition px-3 py-2 rounded-md text-sm font-medium"
             >
               Contact Us
@@ -114,7 +142,7 @@ const Navbar = ({isHome = false}) => {
       {menuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-[59]"
-          onClick={() => setMenuOpen(false)}
+          onClick={() => setMenuOpen(false)} // Close menu on backdrop click
         />
       )}
 
@@ -124,6 +152,7 @@ const Navbar = ({isHome = false}) => {
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
+        {/* Mobile Menu Header */}
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
           <span className="font-bold text-lg">Menu</span>
           <button
@@ -148,15 +177,19 @@ const Navbar = ({isHome = false}) => {
         </div>
 
         {/* Mobile Menu Items */}
-        <nav className="flex flex-col space-y-1 p-4 overflow-y-auto h-[calc(100vh-5rem)]">
+        {/* Added overflow-y-auto and adjusted height calculation */}
+        <nav className="flex flex-col space-y-1 p-4 overflow-y-auto h-[calc(100vh-3.5rem)]">
+          {" "}
+          {/* Adjusted header height assumption */}
+          {/* Home */}
           <a
             href="/"
             className="block py-2.5 px-3 rounded hover:bg-gray-700 hover:text-[#FBBF24] transition"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => setMenuOpen(false)} // Close menu on click
           >
             Home
           </a>
-
+          {/* Products (Mobile) */}
           <div>
             <button
               onClick={toggleProductsMenu}
@@ -195,11 +228,20 @@ const Navbar = ({isHome = false}) => {
               </div>
             )}
           </div>
-
+          {/* === ADDED CUSTOMERS LINK (Mobile) === */}
           <a
-            href="#contact"
+            href="/customers"
             className="block py-2.5 px-3 rounded hover:bg-gray-700 hover:text-[#FBBF24] transition"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => setMenuOpen(false)} // Close menu on click
+          >
+            Customers
+          </a>
+          {/* ==================================== */}
+          {/* Contact */}
+          <a
+            href="/#contact" // Link to contact section on homepage
+            className="block py-2.5 px-3 rounded hover:bg-gray-700 hover:text-[#FBBF24] transition"
+            onClick={() => setMenuOpen(false)} // Close menu on click
           >
             Contact Us
           </a>
@@ -207,6 +249,11 @@ const Navbar = ({isHome = false}) => {
       </div>
     </nav>
   );
+};
+
+// Define PropTypes
+Navbar.propTypes = {
+  isHome: PropTypes.bool,
 };
 
 export default Navbar;
